@@ -1222,6 +1222,14 @@ class App(ctk.CTk):
         self.title("VaultGuard")
         self.geometry("1080x680"); self.minsize(860, 540)
         self.configure(fg_color=BG)
+        try:
+            icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "icon.png")
+            if os.path.exists(icon_path):
+                icon_tk = tk.PhotoImage(file=icon_path)
+                self.iconphoto(True, icon_tk)
+                self._icon_ref = icon_tk
+        except Exception:
+            pass
         self._screen    = None
         self._lock_tmr  = None
         self._vault     = None
